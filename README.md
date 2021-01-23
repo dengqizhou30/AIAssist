@@ -44,49 +44,27 @@ windows10，16核CPU，16G内存，8G rtx3070显卡
 
 
 
-四、感谢以下项目：
+四、感谢以下框架及项目：
 
-业界大神级图像处理框架OpenCv：
+1、intel贡献的大神级图像处理框架OpenCv：
+https://opencv.org/
 
+OpenCV DNN 模块目前支持多种AI对象检测模型推理运行：
+https://github.com/opencv/opencv/tree/master/samples/dnn
+https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API
+https://github.com/openvinotoolkit/open_model_zoo
 
-
-1、图像处理及对象检测类ScreenDetection.cs
-使用OpenCv进行图像封装及AI对象识别；
-使用OpenCvSharp4封装库，将OpenCv引入C#开发运行环境；
+2、OpenCvSharp4封装库，将OpenCv引入C#开发运行环境；
 https://github.com/shimat/opencvsharp
 在Visual Studio中，可以通过NuGet安装OpenCvSharp程序包；
 
-使用windwos gdi32的Bitmap的Graphics类的CopyFromScreen，获取屏幕像素作为输入图像；
-
-使用OpenCv的DNN网络模块，加载AI模型进行图像检测；
-使用tensoflow的对象检测模型ssd_mobilenet_v3，作为人像检测模型；
+3、谷歌tensoflow的对象检测模型ssd_mobilenet_v3，作为人像检测模型；
 https://github.com/tensorflow
 https://github.com/tensorflow/models
 https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/README.md
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md
 
-
-OpenCV DNN 模块调用 TensorFlow 训练的目标检测模型时，需要一个额外的配置文件，其主要是基于与 protocol buffers(protobuf) 格式序列化图(graph) 相同的文本格式版本.
-OpenCV提供对应的python脚本，根据模型文件来生成模型配置文件：
-https://github.com/opencv/opencv/tree/master/samples/dnn
-https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API
-https://github.com/openvinotoolkit/open_model_zoo
-
-
-2、OpenCV生成模型配置文件参考：
-docker run -it -v /root/123:/root/123 tensorflow/tensorflow:latest-py3 /bin/bash
-python tf_text_graph_ssd.py --input frozen_inference_graph.pb --config pipeline.config --output ssd_mobilenet_v2.pbtxt
-python tf_text_graph_ssd.py --input frozen_inference_graph.pb --config pipeline.config --output ssd_mobilenet_v3.pbtxt
-
-
-3、键盘鼠标操作类UsbDevice.cs
-使用usb键盘鼠标模拟器幽灵键鼠KML02 KML2，进行鼠标键盘操作；
-https://item.taobao.com/item.htm?spm=a1z09.2.0.0.73c82e8dgWaDdC&id=44563787968&_u=lc59tnif8a8
-提供编程接口sdk：
-http://pan.baidu.com/s/1kUr9UEb
-
-实测只有32位的动态库可以正常工作，64位的无法正常工作，所以目前只能使用32位库，同时整个程序也只能构建成32位的；
 
 
 
