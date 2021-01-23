@@ -39,8 +39,9 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 逆战图像里面的图像识别准确率比绝地求生高，效果也更好，借助工具辅助，个人由一个菜鸟升级为中高级玩家。</br>
 </br>
 游戏效果截图：</br>
-![image](https://imgchr.com/i/sHF340)
-![image](https://imgchr.com/i/sHF1Nq)
+![img](https://i.postimg.cc/K12mfTYx/juediqiusheng1.jpg)
+</br>
+![img](https://i.postimg.cc/yJ6s4z9G/nizhan1.jpg)
 </br>
 </br>
 三、后续优化方向：</br>
