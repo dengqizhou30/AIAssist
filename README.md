@@ -37,8 +37,10 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 2、测试游戏：</br>
 目前只测试了PUBG的绝地求生、腾讯的逆战两款游戏。</br>
 逆战图像里面的图像识别准确率比绝地求生高，效果也更好，借助工具辅助，个人由一个菜鸟升级为中高级玩家。</br>
+</br>
 游戏效果截图：</br>
-
+![image](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/nizhan1.png)
+![image](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/juediqiusheng1.png)
 </br>
 </br>
 三、后续优化方向：</br>
