@@ -125,8 +125,9 @@
     <Content Include="kmllib64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="test\juediqiusheng1.png" />
+    <Content Include="test\nizhan1.png" />
     <Content Include="架构说明-bak.txt" />
-    <Content Include="架构说明.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

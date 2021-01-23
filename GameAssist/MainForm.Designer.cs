@@ -83,7 +83,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(219, 26);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(450, 274);
+            this.pictureBox1.Size = new System.Drawing.Size(413, 274);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -146,7 +146,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(298, 321);
+            this.button9.Location = new System.Drawing.Point(260, 321);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(86, 33);
             this.button9.TabIndex = 14;
@@ -302,7 +302,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 364);
+            this.ClientSize = new System.Drawing.Size(640, 364);
             this.Controls.Add(this.checkBox_autoFire);
             this.Controls.Add(this.checkBox_autoTrace);
             this.Controls.Add(this.groupBox2);
