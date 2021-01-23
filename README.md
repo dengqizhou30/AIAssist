@@ -61,7 +61,7 @@ https://github.com/openvinotoolkit/open_model_zoo
 https://github.com/shimat/opencvsharp
 在Visual Studio中，可以通过NuGet安装OpenCvSharp程序包；
 
-3、谷歌tensoflow的对象检测模型ssd_mobilenet_v3，作为人像检测模型；
+3、谷歌tensoflow的对象检测模型ssd_mobilenet_v3；
 https://github.com/tensorflow
 https://github.com/tensorflow/models
 https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/README.md
