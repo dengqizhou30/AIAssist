@@ -52,7 +52,7 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 技术栈升级：opencv、AI模型等，全栈跟随技术发展，最快升级到最新版；</br>
 </br>
 </br>
-四、感谢以下框架及项目：</br>
+四、引用的框架及项目：</br>
 </br>
 1、intel贡献的大神级图像处理框架OpenCv：</br>
 https://opencv.org/</br>
