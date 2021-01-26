@@ -172,7 +172,7 @@ namespace GameAssist
             }
 
             //计算需要实际检测的屏幕区域
-            CalDetectionRect(400,240);
+            CalDetectionRect(360,240);
         }
 
         //计算需要实际检测的屏幕区域
