@@ -1,4 +1,4 @@
-GameAssist是一个AI游戏助手，使用AI技术进行游戏屏幕人员识别，自动瞄准等，辅助玩家提升游戏体验；</br>
+GameAssist是一个AI游戏助手，结合OpenCv、OpenCvSharp4、ssd_mobilenet_v3等技术，对游戏对象进行识别，支持自动瞄准/自动开枪等功能，提升玩家的游戏体验；</br>
 
 重要的事情说三遍：这个工具和普通游戏外挂不同！不同！不同！</br>
 普通游戏外挂：通过需改游戏执行代码/修改游戏内存数据/拦截游戏网络通讯等手段，破坏游戏进程，达到提升目的，这些手段是违法的。</br>
@@ -37,8 +37,11 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 2、测试游戏：</br>
 目前只测试了PUBG的绝地求生、腾讯的逆战两款游戏。</br>
 逆战图像里面的图像识别准确率比绝地求生高，效果也更好，借助工具辅助，个人由一个菜鸟升级为中高级玩家。</br>
+</br>
 游戏效果截图：</br>
-
+![img](https://i.postimg.cc/K12mfTYx/juediqiusheng1.jpg)
+</br>
+![img](https://i.postimg.cc/yJ6s4z9G/nizhan1.jpg)
 </br>
 </br>
 三、后续优化方向：</br>
@@ -49,7 +52,7 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 技术栈升级：opencv、AI模型等，全栈跟随技术发展，最快升级到最新版；</br>
 </br>
 </br>
-四、感谢以下框架及项目：</br>
+四、引用的框架及项目：</br>
 </br>
 1、intel贡献的大神级图像处理框架OpenCv：</br>
 https://opencv.org/</br>
