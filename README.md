@@ -46,10 +46,10 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 </br>
 三、后续优化方向：</br>
 </br>
-模型调优1：直接使用了预训练模型，需要对具体的游戏，整理训练数据进行调优训练，提升识别准确率；</br>
-模型调优2：目前直接使用对象识别模型，后续尝试引入对象追踪算法模型，提升模型识别效率；</br>
+模型调优1：目前直接使用了预训练模型，图像识别效果一般。后续需要针对具体的游戏，整理训练样本，进行调优训练，提升识别准确率；（这个需要手工截图、标注，太繁琐，目前实在懒得做）</br>
+模型调优2：目前只使用对象识别模型，后续尝试对象识别模型和对象追踪算法进行组合，提升模型识别效率；</br>
 鼠标追踪算法调优：3D游戏鼠标移动瞄准算法，需要不断尝试调优；</br>
-技术栈升级：opencv、AI模型等，全栈跟随技术发展，最快升级到最新版；</br>
+技术栈升级：opencv、AI模型等，全栈技术紧追业界发展，最快升级到新版本；</br>
 </br>
 </br>
 四、引用的框架及项目：</br>
@@ -72,7 +72,8 @@ https://github.com/tensorflow/models</br>
 https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/README.md</br>
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md</br>
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md</br>
-
-
-
+</br>
+</br>
+联系方式：dengqizhou30@163.com</br>
+欢迎感兴趣的同道交流，日常事务繁忙，如未及时回复请见谅。
 
