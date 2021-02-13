@@ -28,7 +28,6 @@ python tf_text_graph_ssd.py --input frozen_inference_graph.pb --config pipeline.
 这种鼠标键盘设备，淘宝上有，USB接口的，这里不方便列出来，各位兄弟自己去找。</br>
 </br>
 </br>
-
 二、测试效果：</br>
 </br>
 1、运行环境：</br>
@@ -39,9 +38,8 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 逆战图像里面的图像识别准确率比绝地求生高，效果也更好，借助工具辅助，个人由一个菜鸟升级为中高级玩家。</br>
 </br>
 游戏效果截图：</br>
-![img](https://i.postimg.cc/K12mfTYx/juediqiusheng1.jpg)
-</br>
-![img](https://i.postimg.cc/yJ6s4z9G/nizhan1.jpg)
+![img](https://i.postimg.cc/K12mfTYx/juediqiusheng1.jpg)</br>
+![img](https://i.postimg.cc/yJ6s4z9G/nizhan1.jpg)</br>
 </br>
 </br>
 三、后续优化方向：</br>
@@ -72,6 +70,7 @@ https://github.com/tensorflow/models</br>
 https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/README.md</br>
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md</br>
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md</br>
+</br>
 </br>
 五、联系方式：</br>
 </br>
