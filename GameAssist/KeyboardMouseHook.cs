@@ -59,7 +59,8 @@ namespace GameAssist
             // registers an event (callback) which gets fired whenever the key changes it's state
             // be sure to use this method after the InputManager is initialized
             //inputManager.RegisterEvent(VirtualKeyCode.Lbutton, InputManager_KeyStateChanged);
-            //只检测鼠标右键状态，也就是瞄准键的状态
+            //对于可以设置鼠键钩子的游戏，如绝地求生等，设置鼠键钩子监视鼠标右键按下。有些游戏如逆战，在游戏启用后会禁用鼠键钩子，这种方式不起作用
+            //对于支持鼠键钩子的游戏，检测鼠标右键状态，也就是瞄准键的状态，实现在按下右键后才触发一段时间的自动追踪的功能。
             inputManager.RegisterEvent(VirtualKeyCode.Rbutton, InputManager_KeyStateChanged);
         }
 

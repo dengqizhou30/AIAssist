@@ -189,7 +189,7 @@ namespace GameAssist
             LeftClick(1);
             Thread.Sleep(120);
             //切枪
-            KeyPress("3",2);
+            KeyPress("2",2);
         }
 
         //自动开枪
