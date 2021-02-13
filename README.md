@@ -73,7 +73,8 @@ https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/RE
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md</br>
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md</br>
 </br>
+五、联系方式：</br>
 </br>
-联系方式：dengqizhou30@163.com</br>
+dengqizhou30@163.com</br>
 欢迎感兴趣的同道交流，日常事务繁忙，如未及时回复请见谅。
 
