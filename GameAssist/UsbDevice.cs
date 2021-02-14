@@ -67,6 +67,9 @@ namespace GameAssist
         static extern int LeftClick(int Count);
 
         [DllImport("kmllib.dll")]
+        static extern int RightClick(int Count);
+
+        [DllImport("kmllib.dll")]
         static extern int LeftDoubleClick(int Count);
 
         [DllImport("kmllib.dll")]
@@ -118,7 +121,9 @@ namespace GameAssist
         //是否自动开火
         public bool autoFire = false;
         //枪械类型,1是步枪、2连狙、3单狙
-        public int gunType = 1; 
+        public int gunType = 1;
+        //单狙自动开枪的步骤，瞄准后第1步先开镜，第2步再射击并切枪
+        public int gun3Step = 0;
         //最后一次自动开枪的时间
         public long lastFireTicks = DateTime.Now.Ticks;
 
@@ -171,25 +176,37 @@ namespace GameAssist
         //步枪开火
         private void Gun1Fire()
         {
-            //LeftClick(1);
-            LeftDown();
-            Thread.Sleep(190);
-            LeftUp();
+            LeftClick(6);
+
+            //LeftDown();
+            //Thread.Sleep(300);
+            //LeftUp();
         }
 
         //连狙开火
         private void Gun2Fire()
         {
-            LeftClick(1);
+            LeftClick(3);
         }
 
         //单阻开火
         private void Gun3Fire()
         {
-            LeftClick(1);
-            Thread.Sleep(120);
-            //切枪
-            KeyPress("2",2);
+            if(gun3Step <= 0)
+            {
+                RightClick(1);
+                gun3Step = 1;
+            }
+            else
+            { 
+                LeftClick(1);
+                //Thread.Sleep(30);
+                //切枪
+                KeyPress("2",3);
+                //KeyPress("1", 3);
+
+                gun3Step = 0;
+            }
         }
 
         //自动开枪
