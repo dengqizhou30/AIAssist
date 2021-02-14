@@ -173,7 +173,7 @@ namespace GameAssist
         {
             //LeftClick(1);
             LeftDown();
-            Thread.Sleep(120);
+            Thread.Sleep(190);
             LeftUp();
         }
 
