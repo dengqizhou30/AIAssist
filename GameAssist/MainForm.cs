@@ -126,10 +126,10 @@ namespace GameAssist
             usbDevice = new UsbDevice();
             systemStatus = new SytemStatus();
 
-            keyboardMouseHook = new KeyboardMouseHook(this, usbDevice);
+            keyboardMouseHook = new KeyboardMouseHook(usbDevice, this, this.comboBox_bag1GunType, this.comboBox_bag1ScopeType, this.comboBox_bag2GunType, this.comboBox_bag2ScopeType);
 
             //缺省启动鼠标右键hook
-            systemStatus.rButtonHook = true;
+            systemStatus.keyMouseHook = true;
             keyboardMouseHook.StartHook();
 
             this.textBox_msg.Text = systemStatus.GetSytemStatus();
@@ -349,6 +349,12 @@ namespace GameAssist
                 this.usbDevice.gunType = 3;
         }
 
+        private void radio_gun4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radio_gun4.Checked)
+                this.usbDevice.gunType = 4;
+        }
+
         private void checkBox_checkImg_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox_checkImg.Checked)
@@ -429,6 +435,23 @@ namespace GameAssist
         {
             if(usbDevice.autoTraceTimeOut > 0)
             usbDevice.autoTraceTimeOut = usbDevice.autoTraceTimeOut - 1;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox_autoPush_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBox_autoPush.Checked)
+            {
+                this.keyboardMouseHook.autoPush = true;
+            }
+            else
+            {
+                this.keyboardMouseHook.autoPush = false;
+            }
         }
     }
 }

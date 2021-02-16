@@ -120,12 +120,16 @@ namespace GameAssist
 
         //是否自动开火
         public bool autoFire = false;
-        //枪械类型,1是步枪、2连狙、3单狙
+        //枪械射击类型,1是单点、2是3连点、3是6连点、4是持续300ms
         public int gunType = 1;
         //单狙自动开枪的步骤，瞄准后第1步先开镜，第2步再射击并切枪
         public int gun3Step = 0;
         //最后一次自动开枪的时间
         public long lastFireTicks = DateTime.Now.Ticks;
+
+        //是否正在运行自动压枪
+        private bool isAutoPushing = false;
+
 
         public int currentX = 0;
         public int currentY = 0;
@@ -173,40 +177,168 @@ namespace GameAssist
 
         }
 
-        //步枪开火
+        //单点开火
         private void Gun1Fire()
         {
-            LeftClick(6);
+            LeftClick(1);
 
-            //LeftDown();
-            //Thread.Sleep(300);
-            //LeftUp();
-        }
-
-        //连狙开火
-        private void Gun2Fire()
-        {
-            LeftClick(3);
-        }
-
-        //单阻开火
-        private void Gun3Fire()
-        {
-            if(gun3Step <= 0)
+            /*
+            if (gun3Step <= 0)
             {
                 RightClick(1);
                 gun3Step = 1;
             }
             else
-            { 
+            {
                 LeftClick(1);
                 //Thread.Sleep(30);
                 //切枪
-                KeyPress("2",3);
+                KeyPress("2", 3);
                 //KeyPress("1", 3);
 
                 gun3Step = 0;
+
             }
+            */
+        }
+
+        //3连点开火
+        private void Gun2Fire()
+        {
+            LeftClick(1);
+            Thread.Sleep(30);
+            LeftClick(1);
+            Thread.Sleep(30);
+            LeftClick(1);
+        }
+
+        //6连点开火
+        private void Gun3Fire()
+        {
+            LeftClick(1);
+            Thread.Sleep(30);
+            LeftClick(1);
+            Thread.Sleep(30);
+            LeftClick(1);
+            Thread.Sleep(30);
+            LeftClick(1);
+            Thread.Sleep(30);
+            LeftClick(1);
+            Thread.Sleep(30);
+            LeftClick(1);
+        }
+
+        //持续300ms开火
+        private void Gun4Fire()
+        {
+            LeftDown();
+            Thread.Sleep(300);
+            LeftUp();
+        }
+
+        //异步自动压枪
+        private async void AutoPushAction(int tbs, int comp)
+        {
+            await Task.Run(() =>
+            {
+                for(int i=0; isAutoPushing && i < 2000; i++)
+                {
+                    //另外由于游戏设置了鼠标灵敏度，所以鼠标移动，高根据游戏里面灵敏度设置，乘一个比例。
+                    //使用模拟移动函数移动鼠标
+                    Point point = GetCursorPosition();
+
+                    if (point != null)
+                    {
+                        int targetX = point.X;
+                        int targetY = point.Y + comp;
+
+                        SimulationMove(targetX, targetY);
+
+                        Thread.Sleep(tbs);
+                    }
+                }
+            });
+        }
+
+        //启动自动压枪
+        public void StartAutoPush(int tbs, int comp)
+        {
+            //检测压枪参数，高度和时间间隔
+            if (!isAutoPushing && comp > 0  && tbs > 0)
+            {
+                isAutoPushing = true;
+
+                //调用异步的自动压枪方法
+                AutoPushAction(tbs, comp);
+            }
+        }
+
+        //停止自动压枪
+        public void StopAutoPush()
+        {
+            isAutoPushing = false;
+        }
+
+        //异步自动开枪
+        private async void AutoFireAction(string processName, int gunType)
+        {
+            await Task.Run(() =>
+            {
+                if (processName.Equals(processNames[0]))
+                {
+                    //绝地求生
+                    long curTicks = DateTime.Now.Ticks;
+                    //自动开枪间隔3秒以上
+                    //如果在600毫秒内都是瞄准的，可以多次开枪
+                    /**
+                    long intervalTime = (curTicks - lastFireTicks) / 10000;
+                    if (intervalTime > 3000 || intervalTime < 600)
+                    {
+                        lastFireTicks = curTicks;                         
+                    }
+                    **/
+                    switch (gunType)
+                    {
+                        case 1:
+                            Gun1Fire();
+                            break;
+                        case 2:
+                            Gun2Fire();
+                            break;
+                        case 3:
+                            Gun3Fire();
+                            break;
+                        case 4:
+                            Gun4Fire();
+                            break;
+                    }
+                }
+                else if (processName.Equals(processNames[1]))
+                {
+                    //逆战
+                    long curTicks = DateTime.Now.Ticks;
+                    //自动开枪间隔3秒以上
+                    //如果在600毫秒内都是瞄准的，可以多次开枪
+                    long intervalTime = (curTicks - lastFireTicks) / 10000;
+
+                    switch (gunType)
+                    {
+                        case 1:
+                            Gun1Fire();
+                            break;
+                        case 2:
+                            Gun2Fire();
+                            break;
+                        case 3:
+                            Gun3Fire();
+                            break;
+                        case 4:
+                            Gun4Fire();
+                            break;
+                    }
+
+                }
+            });
         }
 
         //自动开枪
@@ -214,116 +346,43 @@ namespace GameAssist
         {
             bool fired = false;
 
-            //自动开枪逻辑
-            if (usbDeviceStatus && autoFire)
+            //判断是否已瞄准对象
+            if (moveX <= (detectionResult4Rect.maxConfidencePos.x2 - detectionResult4Rect.maxConfidencePos.x1) / 4 &&
+                moveY <= (detectionResult4Rect.maxConfidencePos.y2 - detectionResult4Rect.maxConfidencePos.y1) / 6)
             {
-
-                //判断是否已瞄准对象
-                if (moveX <= (detectionResult4Rect.maxConfidencePos.x2 - detectionResult4Rect.maxConfidencePos.x1) / 4 &&
-                    moveY <= (detectionResult4Rect.maxConfidencePos.y2 - detectionResult4Rect.maxConfidencePos.y1) / 6)
-                {
-
-                    //绝地求生
-                    if (this.processName.Equals(processNames[0]))
-                    {
-                        long curTicks = DateTime.Now.Ticks;
-                        //自动开枪间隔3秒以上
-                        //如果在600毫秒内都是瞄准的，可以多次开枪
-                        /**
-                        long intervalTime = (curTicks - lastFireTicks) / 10000;
-                        if (intervalTime > 3000 || intervalTime < 600)
-                        {
-                            lastFireTicks = curTicks;                         
-                        }
-                        **/
-                        switch (this.gunType)
-                        {
-                            case 1:
-                                Gun1Fire();
-                                break;
-                            case 2:
-                            case 3:
-                                Gun2Fire();
-                                break;
-                        }
-                    }
-                    else if (this.processName.Equals(processNames[1]))
-                    {
-                        //逆战
-                        long curTicks = DateTime.Now.Ticks;
-                        //自动开枪间隔3秒以上
-                        //如果在600毫秒内都是瞄准的，可以多次开枪
-                        long intervalTime = (curTicks - lastFireTicks) / 10000;
-
-                        switch (this.gunType)
-                        {
-                            case 1:
-                                Gun1Fire();
-                                break;
-                            case 2:
-                                Gun2Fire();
-                                break;
-                            case 3:
-                                Gun3Fire();
-                                break;
-                        }
-                       
-                    }
-                    fired = true;
-                }
+                //调用异步的自动开枪方法
+                AutoFireAction(this.processName, this.gunType);
+                fired = true;
             }
 
             return fired;
         }
 
-        //目标跟踪,参数位检测的屏幕区域位置、及检测到的对象位置
-        private void TraceObject(DetectionResult4Rect detectionResult4Rect)
+        //自动跟踪
+        private void AutoTrace(DetectionResult4Rect detectionResult4Rect, int moveX, int moveY)
         {
-            //计算对象的中心点，基于实际检测区域计算
-            int objCenterX = detectionResult4Rect.maxConfidencePos.x1 + (detectionResult4Rect.maxConfidencePos.x2 - detectionResult4Rect.maxConfidencePos.x1) / 2;
-            int objCenterY = detectionResult4Rect.maxConfidencePos.y1 + (detectionResult4Rect.maxConfidencePos.y2 - detectionResult4Rect.maxConfidencePos.y1) / 3;
-            objCenterX = detectionResult4Rect.detectionRect.x + objCenterX;
-            objCenterY = detectionResult4Rect.detectionRect.y + objCenterY;
-
-            //计算屏幕中心点，要基于原始窗口区域计算
-            int screenCenterX = detectionResult4Rect.rawDetectionRect.x + detectionResult4Rect.rawDetectionRect.w / 2;
-            int screenCenterY = detectionResult4Rect.rawDetectionRect.y + detectionResult4Rect.rawDetectionRect.h / 2;
-
-            //对于目前的3D游戏，瞄准就是把屏幕中心点，移动到对象中心点
-            //计算出贯标移动的相对位置
-            int moveX = objCenterX - screenCenterX;
-            int moveY = objCenterY - screenCenterY;
-
+           
             //如果位置很接近了，则直接退出
-            if(Math.Abs(moveX) < 5 && Math.Abs(moveY) < 5)
+            if (Math.Abs(moveX) < 5 && Math.Abs(moveY) < 5)
             {
                 return;
-            }
-
-            //自动开枪逻辑
-            if (autoFire)
-            {        
-                bool fired = AutoFire(detectionResult4Rect, moveX, moveY);
-                //如果正在开火，则后续的自动瞄准操作可以跳过
-                if (fired)
-                    return;
             }
 
             //由于是3D游戏，位置是3维坐标，物体越远，移动距离要乘的系数就越大。
             //暂时没有好的方法通过图片检测计算3维坐标，先使用对象的大小初略计算z坐标，但是开镜后的大小暂时无法处理。
             //为了处理太远图片的问题，在按对数log计算一个倍数，实现位置越远倍数不能太大的效果。
             double zParam = 0;
-            if(detectionResult4Rect.maxPersonW > 0)
+            if (detectionResult4Rect.maxPersonW > 0)
             {
                 zParam = (detectionResult4Rect.maxPersonW) / (detectionResult4Rect.maxConfidencePos.x2 - detectionResult4Rect.maxConfidencePos.x1);
-                if(zParam > 1)
+                if (zParam > 1)
                     zParam = Math.Log(2 * zParam, 2);
             }
 
             //再根据x/y的距离作为一个乘积参数，距离越小参数倍数越小，实现位置越近移动距离更小的效果。
             if (moveX != 0 && moveY != 0)
             {
-                double zParam2 = Math.Log(Math.Abs(moveX)+ Math.Abs(moveY), 50);
+                double zParam2 = Math.Log(Math.Abs(moveX) + Math.Abs(moveY), 50);
                 zParam = zParam * zParam2;
             }
 
@@ -331,7 +390,7 @@ namespace GameAssist
             //另外由于游戏设置了鼠标灵敏度，所以鼠标移动，高根据游戏里面灵敏度设置，乘一个比例。
             //使用模拟移动函数移动鼠标
             Point point = GetCursorPosition();
-            
+
             if (point != null && zParam > 0)
             {
                 currentX = point.X;
@@ -365,7 +424,42 @@ namespace GameAssist
                     SimulationMove(targetX, targetY);
                 }
             }
-            
+
+        }
+
+        //目标跟踪,参数位检测的屏幕区域位置、及检测到的对象位置
+        private void AutoAction(DetectionResult4Rect detectionResult4Rect)
+        {
+            //计算对象的中心点，基于实际检测区域计算
+            int objCenterX = detectionResult4Rect.maxConfidencePos.x1 + (detectionResult4Rect.maxConfidencePos.x2 - detectionResult4Rect.maxConfidencePos.x1) / 2;
+            int objCenterY = detectionResult4Rect.maxConfidencePos.y1 + (detectionResult4Rect.maxConfidencePos.y2 - detectionResult4Rect.maxConfidencePos.y1) / 3;
+            objCenterX = detectionResult4Rect.detectionRect.x + objCenterX;
+            objCenterY = detectionResult4Rect.detectionRect.y + objCenterY;
+
+            //计算屏幕中心点，要基于原始窗口区域计算
+            int screenCenterX = detectionResult4Rect.rawDetectionRect.x + detectionResult4Rect.rawDetectionRect.w / 2;
+            int screenCenterY = detectionResult4Rect.rawDetectionRect.y + detectionResult4Rect.rawDetectionRect.h / 2;
+
+            //对于目前的3D游戏，瞄准就是把屏幕中心点，移动到对象中心点
+            //计算准星到对象中心点的相对位置
+            int moveX = objCenterX - screenCenterX;
+            int moveY = objCenterY - screenCenterY;
+
+
+            //自动开枪
+            bool fireing = false;
+            if (autoFire)
+            {
+                fireing = AutoFire(detectionResult4Rect, moveX, moveY);
+            }
+
+            //自动追踪
+            if ((autoTraceType == 1 && autoTraceType ==1) || (autoTraceType == 1 && autoTraceType == 2 && autoTraceTimeOut > 0))
+            {
+                //持续追踪或则鼠标右键瞄准触发追踪
+                AutoTrace(detectionResult4Rect, moveX, moveY);
+            }
+
         }
 
         //设置进程名称
@@ -401,19 +495,10 @@ namespace GameAssist
                 this.OpenUsbDevice();
             }
 
-            //自动追踪
-            if (usbDeviceStatus && autoTrace)               
-                if (autoTraceType == 1)
-                {
-                    //是持续追踪
-                    TraceObject(detectionResult4Rect);
-                }
-                else
-                {
-                    //鼠标右键瞄准触发追踪
-                    if (autoTraceTimeOut > 0)
-                        TraceObject(detectionResult4Rect);
-                }
+            //自动追踪/自动开火
+            if (usbDeviceStatus)               
+                AutoAction(detectionResult4Rect);
+               
         }
 
     }

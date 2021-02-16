@@ -15,7 +15,7 @@ namespace GameAssist
         public bool imgShow = false;
         public bool autoTrace = false;
         public bool autoFire = false;
-        public bool rButtonHook = false;
+        public bool keyMouseHook = false;
 
         public int currentX = 0;
         public int currentY = 0;
@@ -30,7 +30,7 @@ namespace GameAssist
             ret += "检测结果：" + (imgShow ? "已显示" : "不显示") + "\r\n";
             ret += "自动追踪：" + (autoTrace ? "已开启,numlock键控制" : "未开启") + "\r\n";
             ret += "自动开火：" + (autoFire ? "已开启,numlock键控制" : "未开启") + "\r\n";
-            ret += "鼠标右键hook：" + (rButtonHook ? "已开启" : "未开启") + "\r\n";
+            ret += "鼠标键盘hook：" + (keyMouseHook ? "已开启" : "未开启") + "\r\n";
 
             return ret;
         }
