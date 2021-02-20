@@ -454,7 +454,7 @@ namespace GameAssist
             }
 
             //自动追踪
-            if ((autoTraceType == 1 && autoTraceType ==1) || (autoTraceType == 1 && autoTraceType == 2 && autoTraceTimeOut > 0))
+            if ((autoTrace && autoTraceType ==1) || (autoTrace && autoTraceType == 2 && autoTraceTimeOut > 0))
             {
                 //持续追踪或则鼠标右键瞄准触发追踪
                 AutoTrace(detectionResult4Rect, moveX, moveY);
