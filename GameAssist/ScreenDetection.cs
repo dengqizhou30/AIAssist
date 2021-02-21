@@ -155,7 +155,8 @@ namespace GameAssist
 
             //设置初始检测区域
             rawDetectionRect = new DetectionRect();
-            rawDetectionRect.setValues(0,0,900,760);
+            //缺省使用使用全屏作为工作屏幕
+            rawDetectionRect.setValues(0,0, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             SetSrcScreenRect(rawDetectionRect);
 
         }
