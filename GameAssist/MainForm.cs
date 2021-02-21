@@ -138,8 +138,8 @@ namespace GameAssist
             DetectionRect srcRect = new DetectionRect();
             srcRect.x = 0;
             srcRect.y = 0;
-            srcRect.h = 900;
-            srcRect.w = 900;
+            srcRect.h = Screen.PrimaryScreen.Bounds.Height;
+            srcRect.w = Screen.PrimaryScreen.Bounds.Width;
             if (srcRect.h > 0 && srcRect.w > 0)
             {
                 objectDetection.SetSrcScreenRect(srcRect);
