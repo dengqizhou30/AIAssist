@@ -480,7 +480,7 @@
             this.textBox_detectionRectW.Name = "textBox_detectionRectW";
             this.textBox_detectionRectW.Size = new System.Drawing.Size(41, 21);
             this.textBox_detectionRectW.TabIndex = 40;
-            this.textBox_detectionRectW.Text = "320";
+            this.textBox_detectionRectW.Text = "360";
             this.textBox_detectionRectW.TextChanged += new System.EventHandler(this.textBox_detectionRectW_TextChanged);
             // 
             // textBox_detectionRectH

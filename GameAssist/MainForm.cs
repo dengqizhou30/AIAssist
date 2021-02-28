@@ -456,7 +456,7 @@ namespace GameAssist
 
         private void textBox_detectionRectW_TextChanged(object sender, EventArgs e)
         {
-            int w = 320;
+            int w = 360;
             int h = 220;
             int.TryParse(textBox_detectionRectW.Text, out w);
             int.TryParse(textBox_detectionRectH.Text, out h);
@@ -466,7 +466,7 @@ namespace GameAssist
 
         private void textBox_detectionRectH_TextChanged(object sender, EventArgs e)
         {
-            int w = 320;
+            int w = 360;
             int h = 220;
             int.TryParse(textBox_detectionRectW.Text, out w);
             int.TryParse(textBox_detectionRectH.Text, out h);
