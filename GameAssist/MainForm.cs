@@ -453,5 +453,25 @@ namespace GameAssist
                 this.keyboardMouseHook.autoPush = false;
             }
         }
+
+        private void textBox_detectionRectW_TextChanged(object sender, EventArgs e)
+        {
+            int w = 320;
+            int h = 220;
+            int.TryParse(textBox_detectionRectW.Text, out w);
+            int.TryParse(textBox_detectionRectH.Text, out h);
+            //重新设置实际检测区域大小
+            this.objectDetection.CalDetectionRect(w, h);
+        }
+
+        private void textBox_detectionRectH_TextChanged(object sender, EventArgs e)
+        {
+            int w = 320;
+            int h = 220;
+            int.TryParse(textBox_detectionRectW.Text, out w);
+            int.TryParse(textBox_detectionRectH.Text, out h);
+            //重新设置实际检测区域大小
+            this.objectDetection.CalDetectionRect(w, h);
+        }
     }
 }

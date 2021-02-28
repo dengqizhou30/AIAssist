@@ -180,7 +180,7 @@ namespace GameAssist
         //只检测瞄准位置的一小块窗口，提升检测效率
         public void CalDetectionRect(int w, int h)
         {
-            if (this.rawDetectionRect.w > 0 && this.rawDetectionRect.h > 0)
+            if (w>0 && h>0 && this.rawDetectionRect.w > 0 && this.rawDetectionRect.h > 0 && w <= this.rawDetectionRect.w &&  h <= this.rawDetectionRect.h)
             {
                 //获取到窗口坐标
                 this.detectionRect = new DetectionRect();
@@ -194,6 +194,11 @@ namespace GameAssist
                 this.detectionRect.y = centy - (h/2 + h/10);
                 this.detectionRect.h = h;
             }
+
+            if (this.detectGraphics != null)
+                this.detectGraphics.Dispose();
+            if (this.detectBitmap != null)
+                this.detectBitmap.Dispose();
 
             //初始化全局检测图像处理对象
             this.detectBitmap = new Bitmap(this.detectionRect.w, this.detectionRect.h);

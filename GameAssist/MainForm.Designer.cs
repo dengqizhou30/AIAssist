@@ -45,6 +45,7 @@
             this.backgroundWorker_showimg = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker_usbdev = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radio_gun4 = new System.Windows.Forms.RadioButton();
             this.radio_gun3 = new System.Windows.Forms.RadioButton();
             this.radio_gun2 = new System.Windows.Forms.RadioButton();
             this.radio_gun1 = new System.Windows.Forms.RadioButton();
@@ -54,7 +55,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radio_rButtonTrace = new System.Windows.Forms.RadioButton();
             this.radio_persistTrace = new System.Windows.Forms.RadioButton();
-            this.radio_gun4 = new System.Windows.Forms.RadioButton();
             this.checkBox_autoPush = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_bag1GunType = new System.Windows.Forms.ComboBox();
@@ -66,6 +66,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox_bag2GunType = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_detectionRectW = new System.Windows.Forms.TextBox();
+            this.textBox_detectionRectH = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -203,12 +206,23 @@
             this.groupBox1.Controls.Add(this.radio_gun3);
             this.groupBox1.Controls.Add(this.radio_gun2);
             this.groupBox1.Controls.Add(this.radio_gun1);
-            this.groupBox1.Location = new System.Drawing.Point(49, 182);
+            this.groupBox1.Location = new System.Drawing.Point(49, 191);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(117, 90);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // radio_gun4
+            // 
+            this.radio_gun4.AutoSize = true;
+            this.radio_gun4.Location = new System.Drawing.Point(5, 68);
+            this.radio_gun4.Name = "radio_gun4";
+            this.radio_gun4.Size = new System.Drawing.Size(101, 16);
+            this.radio_gun4.TabIndex = 3;
+            this.radio_gun4.Text = "持续300ms射击";
+            this.radio_gun4.UseVisualStyleBackColor = true;
+            this.radio_gun4.CheckedChanged += new System.EventHandler(this.radio_gun4_CheckedChanged);
             // 
             // radio_gun3
             // 
@@ -236,7 +250,7 @@
             // 
             this.radio_gun1.AutoSize = true;
             this.radio_gun1.Checked = true;
-            this.radio_gun1.Location = new System.Drawing.Point(4, 14);
+            this.radio_gun1.Location = new System.Drawing.Point(4, 21);
             this.radio_gun1.Name = "radio_gun1";
             this.radio_gun1.Size = new System.Drawing.Size(71, 16);
             this.radio_gun1.TabIndex = 0;
@@ -248,7 +262,7 @@
             // checkBox_checkImg
             // 
             this.checkBox_checkImg.AutoSize = true;
-            this.checkBox_checkImg.Location = new System.Drawing.Point(10, 73);
+            this.checkBox_checkImg.Location = new System.Drawing.Point(10, 67);
             this.checkBox_checkImg.Name = "checkBox_checkImg";
             this.checkBox_checkImg.Size = new System.Drawing.Size(96, 16);
             this.checkBox_checkImg.TabIndex = 24;
@@ -259,7 +273,7 @@
             // checkBox_autoTrace
             // 
             this.checkBox_autoTrace.AutoSize = true;
-            this.checkBox_autoTrace.Location = new System.Drawing.Point(10, 103);
+            this.checkBox_autoTrace.Location = new System.Drawing.Point(10, 115);
             this.checkBox_autoTrace.Name = "checkBox_autoTrace";
             this.checkBox_autoTrace.Size = new System.Drawing.Size(96, 16);
             this.checkBox_autoTrace.TabIndex = 25;
@@ -270,7 +284,7 @@
             // checkBox_autoFire
             // 
             this.checkBox_autoFire.AutoSize = true;
-            this.checkBox_autoFire.Location = new System.Drawing.Point(10, 179);
+            this.checkBox_autoFire.Location = new System.Drawing.Point(10, 188);
             this.checkBox_autoFire.Name = "checkBox_autoFire";
             this.checkBox_autoFire.Size = new System.Drawing.Size(96, 16);
             this.checkBox_autoFire.TabIndex = 26;
@@ -282,7 +296,7 @@
             // 
             this.groupBox2.Controls.Add(this.radio_rButtonTrace);
             this.groupBox2.Controls.Add(this.radio_persistTrace);
-            this.groupBox2.Location = new System.Drawing.Point(51, 112);
+            this.groupBox2.Location = new System.Drawing.Point(51, 124);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(149, 57);
             this.groupBox2.TabIndex = 27;
@@ -312,21 +326,10 @@
             this.radio_persistTrace.UseVisualStyleBackColor = true;
             this.radio_persistTrace.CheckedChanged += new System.EventHandler(this.radio_persistTrace_CheckedChanged);
             // 
-            // radio_gun4
-            // 
-            this.radio_gun4.AutoSize = true;
-            this.radio_gun4.Location = new System.Drawing.Point(5, 68);
-            this.radio_gun4.Name = "radio_gun4";
-            this.radio_gun4.Size = new System.Drawing.Size(101, 16);
-            this.radio_gun4.TabIndex = 3;
-            this.radio_gun4.Text = "持续300ms射击";
-            this.radio_gun4.UseVisualStyleBackColor = true;
-            this.radio_gun4.CheckedChanged += new System.EventHandler(this.radio_gun4_CheckedChanged);
-            // 
             // checkBox_autoPush
             // 
             this.checkBox_autoPush.AutoSize = true;
-            this.checkBox_autoPush.Location = new System.Drawing.Point(10, 287);
+            this.checkBox_autoPush.Location = new System.Drawing.Point(10, 294);
             this.checkBox_autoPush.Name = "checkBox_autoPush";
             this.checkBox_autoPush.Size = new System.Drawing.Size(204, 16);
             this.checkBox_autoPush.TabIndex = 28;
@@ -337,7 +340,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 312);
+            this.label1.Location = new System.Drawing.Point(49, 315);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 30;
@@ -358,7 +361,7 @@
             "sks",
             "98k",
             "m24"});
-            this.comboBox_bag1GunType.Location = new System.Drawing.Point(51, 329);
+            this.comboBox_bag1GunType.Location = new System.Drawing.Point(51, 332);
             this.comboBox_bag1GunType.Name = "comboBox_bag1GunType";
             this.comboBox_bag1GunType.Size = new System.Drawing.Size(75, 20);
             this.comboBox_bag1GunType.TabIndex = 29;
@@ -367,7 +370,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 331);
+            this.label5.Location = new System.Drawing.Point(12, 334);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 12);
             this.label5.TabIndex = 31;
@@ -376,7 +379,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(132, 313);
+            this.label6.Location = new System.Drawing.Point(132, 316);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 33;
@@ -392,7 +395,7 @@
             "4倍镜",
             "6倍镜",
             "8倍镜"});
-            this.comboBox_bag1ScopeType.Location = new System.Drawing.Point(134, 330);
+            this.comboBox_bag1ScopeType.Location = new System.Drawing.Point(134, 333);
             this.comboBox_bag1ScopeType.Name = "comboBox_bag1ScopeType";
             this.comboBox_bag1ScopeType.Size = new System.Drawing.Size(75, 20);
             this.comboBox_bag1ScopeType.TabIndex = 32;
@@ -462,11 +465,41 @@
             this.comboBox_bag2GunType.TabIndex = 34;
             this.comboBox_bag2GunType.Text = "98k";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 86);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 12);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "检测区域：宽/高";
+            // 
+            // textBox_detectionRectW
+            // 
+            this.textBox_detectionRectW.Location = new System.Drawing.Point(112, 83);
+            this.textBox_detectionRectW.Name = "textBox_detectionRectW";
+            this.textBox_detectionRectW.Size = new System.Drawing.Size(41, 21);
+            this.textBox_detectionRectW.TabIndex = 40;
+            this.textBox_detectionRectW.Text = "320";
+            this.textBox_detectionRectW.TextChanged += new System.EventHandler(this.textBox_detectionRectW_TextChanged);
+            // 
+            // textBox_detectionRectH
+            // 
+            this.textBox_detectionRectH.Location = new System.Drawing.Point(159, 83);
+            this.textBox_detectionRectH.Name = "textBox_detectionRectH";
+            this.textBox_detectionRectH.Size = new System.Drawing.Size(41, 21);
+            this.textBox_detectionRectH.TabIndex = 41;
+            this.textBox_detectionRectH.Text = "220";
+            this.textBox_detectionRectH.TextChanged += new System.EventHandler(this.textBox_detectionRectH_TextChanged);
+            // 
             // AIAssistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 408);
+            this.Controls.Add(this.textBox_detectionRectH);
+            this.Controls.Add(this.textBox_detectionRectW);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox_bag2ScopeType);
             this.Controls.Add(this.label8);
@@ -550,6 +583,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox_bag2GunType;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox_detectionRectW;
+        private System.Windows.Forms.TextBox textBox_detectionRectH;
     }
 }
 
