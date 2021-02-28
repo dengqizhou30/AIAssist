@@ -250,7 +250,7 @@
             // 
             this.radio_gun1.AutoSize = true;
             this.radio_gun1.Checked = true;
-            this.radio_gun1.Location = new System.Drawing.Point(4, 21);
+            this.radio_gun1.Location = new System.Drawing.Point(4, 15);
             this.radio_gun1.Name = "radio_gun1";
             this.radio_gun1.Size = new System.Drawing.Size(71, 16);
             this.radio_gun1.TabIndex = 0;
