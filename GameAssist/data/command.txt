@@ -1,9 +1,0 @@
-﻿
-docker run -it -v /root/123:/root/123 tensorflow/tensorflow:latest-py3 /bin/bash
-
-
-python tf_text_graph_ssd.py --input frozen_inference_graph.pb --config pipeline.config --output ssd_mobilenet_v2.pbtxt
-
-
-python tf_text_graph_ssd.py --input frozen_inference_graph.pb --config pipeline.config --output ssd_mobilenet_v3.pbtxt
-

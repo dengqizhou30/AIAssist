@@ -69,6 +69,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox_detectionRectW = new System.Windows.Forms.TextBox();
             this.textBox_detectionRectH = new System.Windows.Forms.TextBox();
+            this.textBox_autoFireTime = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -208,7 +209,7 @@
             this.groupBox1.Controls.Add(this.radio_gun1);
             this.groupBox1.Location = new System.Drawing.Point(49, 191);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(117, 90);
+            this.groupBox1.Size = new System.Drawing.Size(151, 90);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -218,9 +219,9 @@
             this.radio_gun4.AutoSize = true;
             this.radio_gun4.Location = new System.Drawing.Point(5, 68);
             this.radio_gun4.Name = "radio_gun4";
-            this.radio_gun4.Size = new System.Drawing.Size(101, 16);
+            this.radio_gun4.Size = new System.Drawing.Size(95, 16);
             this.radio_gun4.TabIndex = 3;
-            this.radio_gun4.Text = "持续300ms射击";
+            this.radio_gun4.Text = "持续射击(ms)";
             this.radio_gun4.UseVisualStyleBackColor = true;
             this.radio_gun4.CheckedChanged += new System.EventHandler(this.radio_gun4_CheckedChanged);
             // 
@@ -480,7 +481,7 @@
             this.textBox_detectionRectW.Name = "textBox_detectionRectW";
             this.textBox_detectionRectW.Size = new System.Drawing.Size(41, 21);
             this.textBox_detectionRectW.TabIndex = 40;
-            this.textBox_detectionRectW.Text = "360";
+            this.textBox_detectionRectW.Text = "290";
             this.textBox_detectionRectW.TextChanged += new System.EventHandler(this.textBox_detectionRectW_TextChanged);
             // 
             // textBox_detectionRectH
@@ -489,14 +490,24 @@
             this.textBox_detectionRectH.Name = "textBox_detectionRectH";
             this.textBox_detectionRectH.Size = new System.Drawing.Size(41, 21);
             this.textBox_detectionRectH.TabIndex = 41;
-            this.textBox_detectionRectH.Text = "220";
+            this.textBox_detectionRectH.Text = "260";
             this.textBox_detectionRectH.TextChanged += new System.EventHandler(this.textBox_detectionRectH_TextChanged);
+            // 
+            // textBox_autoFireTime
+            // 
+            this.textBox_autoFireTime.Location = new System.Drawing.Point(154, 257);
+            this.textBox_autoFireTime.Name = "textBox_autoFireTime";
+            this.textBox_autoFireTime.Size = new System.Drawing.Size(41, 21);
+            this.textBox_autoFireTime.TabIndex = 42;
+            this.textBox_autoFireTime.Text = "600";
+            this.textBox_autoFireTime.TextChanged += new System.EventHandler(this.textBox_autoFireTime_TextChanged);
             // 
             // AIAssistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 408);
+            this.Controls.Add(this.textBox_autoFireTime);
             this.Controls.Add(this.textBox_detectionRectH);
             this.Controls.Add(this.textBox_detectionRectW);
             this.Controls.Add(this.label10);
@@ -586,6 +597,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox_detectionRectW;
         private System.Windows.Forms.TextBox textBox_detectionRectH;
+        private System.Windows.Forms.TextBox textBox_autoFireTime;
     }
 }
 

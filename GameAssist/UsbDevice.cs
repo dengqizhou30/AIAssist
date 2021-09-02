@@ -120,8 +120,10 @@ namespace GameAssist
 
         //是否自动开火
         public bool autoFire = false;
-        //枪械射击类型,1是单点、2是3连点、3是6连点、4是持续300ms
+        //枪械射击类型,1是单点、2是3连点、3是6连点、4是持续开枪
         public int gunType = 1;
+        //持续开枪时间
+        public int autoFireTime = 600;
         //单狙自动开枪的步骤，瞄准后第1步先开镜，第2步再射击并切枪
         public int gun3Step = 0;
         //最后一次自动开枪的时间
@@ -228,11 +230,11 @@ namespace GameAssist
             LeftClick(1);
         }
 
-        //持续300ms开火
+        //持续开火
         private void Gun4Fire()
         {
             LeftDown();
-            Thread.Sleep(300);
+            Thread.Sleep(this.autoFireTime);
             LeftUp();
         }
 

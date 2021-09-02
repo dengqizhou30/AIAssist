@@ -105,12 +105,11 @@ namespace GameAssist
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         public static extern bool DeleteObject(IntPtr hObject);
 
-        //AI模型文件路径
-        private const string configFile = @"data\ssd_mobilenet_v3.pbtxt";
-        private const string modelFile = @"data\ssd_mobilenet_v3.pb";
-        //private const string configFile = @"data\pipeline.config";
-        //private const string modelFile = @"data\frozen_inference_graph.pb";
-        private const string labelFile = @"data\coco.names";
+        //AI模型文件路径     
+        private const string configFile = @"data\mobilenet\ssd_mobilenet_v3.pbtxt";
+        private const string modelFile = @"data\mobilenet\ssd_mobilenet_v3.pb";
+        private const string labelFile = @"data\mobilenet\coco.names";
+        
 
         //DNN AI检测网络对象
         private Net detectionNet = null;
@@ -145,8 +144,10 @@ namespace GameAssist
             this.outPictureBox = outPictureBox;
 
             this.detectionNet = CvDnn.ReadNetFromTensorflow(modelFile, configFile);
-            this.detectionNet.SetPreferableBackend(Net.Backend.DEFAULT);
-            this.detectionNet.SetPreferableTarget(Net.Target.CPU);
+            //this.detectionNet = CvDnn.ReadNetFromTensorflow(modelFile);
+
+            this.detectionNet.SetPreferableBackend(Backend.DEFAULT);
+            this.detectionNet.SetPreferableTarget(Target.CPU);
             //this.detectionNet.SetPreferableTarget(Net.Target.OPENCL);
 
             this.labelNames = File.ReadAllLines(labelFile)
@@ -173,7 +174,7 @@ namespace GameAssist
             }
 
             //计算需要实际检测的屏幕区域
-            CalDetectionRect(360,220);
+            CalDetectionRect(290,260);
         }
 
         //计算需要实际检测的屏幕区域
@@ -241,7 +242,8 @@ namespace GameAssist
                     //using (var inputBlob = CvDnn.BlobFromImage(frameMat, 0.008, new OpenCvSharp.Size(320, 320), new Scalar(104, 117, 123), true, false))
                     //using (var inputBlob = CvDnn.BlobFromImage(frameMat, 0.008, new OpenCvSharp.Size(320, 320), new Scalar(103.939, 116.779, 123.68), true, false))
                     //using (var inputBlob = CvDnn.BlobFromImage(frameMat, 0.008, new OpenCvSharp.Size(frameWidth, frameHeight), new Scalar(103.939, 116.779, 123.68), true, false))
-                    using (var inputBlob = CvDnn.BlobFromImage(frameMat, 1.0 / 127.5, new OpenCvSharp.Size(frameWidth, frameHeight), new Scalar(127.5, 127.5, 127.5), true, false))  
+                    using (var inputBlob = CvDnn.BlobFromImage(frameMat, 1.0 / 127.5, new OpenCvSharp.Size(frameWidth, frameHeight), new Scalar(127.5, 127.5, 127.5), true, false))
+                    //using (var inputBlob = CvDnn.BlobFromImage(frameMat, 1.0 / 255, new OpenCvSharp.Size(frameWidth, frameHeight), new Scalar(123.7, 116.3, 103.5), true, false))
                     {
                         //使用AI模型推理检测图像
                         detectionNet.SetInput(inputBlob);
@@ -253,11 +255,12 @@ namespace GameAssist
                         {
                             float confidence = detectionMat.At<float>(i, 2);
 
-                            if (confidence > 0.67)
+                            if (confidence > 0.60)
                             {
                                 int classid = (int)detectionMat.At<float>(i, 1);
                                 //判断识别的类型，这个应用场景只显示识别的人，提升处理效率
                                 //if (classid < this.labelNames.Length &&  (classid == 1 || classid != 1))
+                                //if (classid < this.labelNames.Length && (classid == 1))
                                 if (classid < this.labelNames.Length && (classid == 1))
                                 {
                                     int x1 = (int)(detectionMat.At<float>(i, 3) * frameWidth);

@@ -456,8 +456,8 @@ namespace GameAssist
 
         private void textBox_detectionRectW_TextChanged(object sender, EventArgs e)
         {
-            int w = 360;
-            int h = 220;
+            int w = 290;
+            int h = 260;
             int.TryParse(textBox_detectionRectW.Text, out w);
             int.TryParse(textBox_detectionRectH.Text, out h);
             //重新设置实际检测区域大小
@@ -466,12 +466,21 @@ namespace GameAssist
 
         private void textBox_detectionRectH_TextChanged(object sender, EventArgs e)
         {
-            int w = 360;
-            int h = 220;
+            int w = 290;
+            int h = 260;
             int.TryParse(textBox_detectionRectW.Text, out w);
             int.TryParse(textBox_detectionRectH.Text, out h);
             //重新设置实际检测区域大小
             this.objectDetection.CalDetectionRect(w, h);
+        }
+
+        private void textBox_autoFireTime_TextChanged(object sender, EventArgs e)
+        {
+            int t = 600;
+            int.TryParse(textBox_autoFireTime.Text, out t);
+            //重新设置实际检测区域大小
+            if (this.radio_gun4.Checked)
+                this.usbDevice.autoFireTime = t;
         }
     }
 }
