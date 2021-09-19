@@ -310,7 +310,7 @@
             this.radio_rButtonTrace.Name = "radio_rButtonTrace";
             this.radio_rButtonTrace.Size = new System.Drawing.Size(143, 16);
             this.radio_rButtonTrace.TabIndex = 1;
-            this.radio_rButtonTrace.Text = "鼠标右键瞄准触发追踪";
+            this.radio_rButtonTrace.Text = "点击鼠标右键触发追踪";
             this.radio_rButtonTrace.UseVisualStyleBackColor = true;
             this.radio_rButtonTrace.CheckedChanged += new System.EventHandler(this.radio_rButtonTrace_CheckedChanged);
             // 
