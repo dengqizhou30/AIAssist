@@ -76,5 +76,5 @@ https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc
 </br>
 五、联系方式：</br>
 </br>
-日常工作繁忙，不能及时回复，各位可以在wiki区交流。
+日常工作繁忙，不能及时回复，各位可以在 issues 区交流。
 
