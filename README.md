@@ -40,7 +40,7 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 </br>
 游戏效果截图：</br>
 ![img](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/AIAssist.png)</br>
-![img](https://i.postimg.cc/K12mfTYx/juediqiusheng1.jpg)</br>
+![img](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/nizhan1.png)</br>
 ![img](https://i.postimg.cc/yJ6s4z9G/nizhan1.jpg)</br>
 </br>
 </br>
