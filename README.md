@@ -24,8 +24,9 @@ python tf_text_graph_ssd.py --input frozen_inference_graph.pb --config pipeline.
 python tf_text_graph_ssd.py --input frozen_inference_graph.pb --config pipeline.config --output ssd_mobilenet_v3.pbtxt</br>
 </br>
 3、键盘鼠标操作设置：</br>
-很多游戏禁止鼠标键盘hook，外部进程不能向游戏进程发送鼠标键盘事件。为实现键盘操作，需要使用可编程的鼠标键盘设备，程序调用设备SDK，通过硬件设备来发送鼠标键盘事件。</br>
-这种鼠标键盘设备，淘宝上有，USB接口的，这里不方便列出来，各位兄弟自己去找。</br>
+很多游戏禁止鼠标键盘hook，外部进程无法通过传统事件机制向游戏进程发送鼠标键盘事件。</br>
+要实现游戏不会拦截的键盘鼠标操作，需要使用可编程的鼠标键盘硬件设备，这些硬件设备提供程序可以调用的SDK，控制硬件设备来发送鼠标键盘事件。</br>
+这种鼠标键盘设备，淘宝上有，USB接口的，具体信息这里不方便列出来，各位兄弟自己去找。</br>
 </br>
 </br>
 二、测试效果：</br>
