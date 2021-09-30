@@ -467,7 +467,7 @@ namespace GameAssist
         private void textBox_detectionRectH_TextChanged(object sender, EventArgs e)
         {
             int w = 290;
-            int h = 260;
+            int h = 230;
             int.TryParse(textBox_detectionRectW.Text, out w);
             int.TryParse(textBox_detectionRectH.Text, out h);
             //重新设置实际检测区域大小

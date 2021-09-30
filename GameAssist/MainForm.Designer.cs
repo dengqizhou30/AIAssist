@@ -490,7 +490,7 @@
             this.textBox_detectionRectH.Name = "textBox_detectionRectH";
             this.textBox_detectionRectH.Size = new System.Drawing.Size(41, 21);
             this.textBox_detectionRectH.TabIndex = 41;
-            this.textBox_detectionRectH.Text = "260";
+            this.textBox_detectionRectH.Text = "230";
             this.textBox_detectionRectH.TextChanged += new System.EventHandler(this.textBox_detectionRectH_TextChanged);
             // 
             // textBox_autoFireTime
