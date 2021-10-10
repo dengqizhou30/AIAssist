@@ -159,9 +159,10 @@ namespace GameAssistEfficientdet
             
             //this.detectionNet = CvDnn.ReadNetFromTensorflow(modelFile);
 
-            this.detectionNet.SetPreferableBackend(Backend.DEFAULT);
-            this.detectionNet.SetPreferableTarget(Target.CPU);
-            //this.detectionNet.SetPreferableTarget(Net.Target.OPENCL);
+            //this.detectionNet.SetPreferableBackend(Backend.DEFAULT);
+            //this.detectionNet.SetPreferableTarget(Target.CPU);
+            this.detectionNet.SetPreferableBackend(Backend.CUDA);
+            this.detectionNet.SetPreferableTarget(Target.CUDA);
 
             this.labelNames = File.ReadAllLines(labelFile)
             .Select(line => line.Split('\n').Last())
@@ -187,7 +188,7 @@ namespace GameAssistEfficientdet
             }
 
             //计算需要实际检测的屏幕区域
-            CalDetectionRect(280,200);
+            CalDetectionRect(290,230);
         }
 
         //计算需要实际检测的屏幕区域

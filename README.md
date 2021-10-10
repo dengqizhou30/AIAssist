@@ -51,9 +51,39 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 2、模型调优2：目前只使用对象识别模型，后续尝试对象识别模型和对象追踪算法进行组合，提升模型识别效率；</br>
 3、鼠标追踪算法调优：3D游戏鼠标移动瞄准算法，需要不断尝试调优；</br>
 4、技术栈升级：opencv、AI模型等，全栈技术紧追业界发展，最快升级到新版本；</br>
+5、图像检测使用gpu/CUDA加速，降低cpu消耗同时提升图像检测速度；</br>
 </br>
 </br>
-四、引用的框架及项目：</br>
+四、使用gpu加速：</br>
+</br>
+OpenCvSharp4缺省不支持CUDA，需要使用者自己定制编译。
+1、定制编译支持CUDA的OpenCv：</br>
+https://github.com/shimat/opencv_files</br>
+</br>
+官方文档中没有说明如何cuda，在运行build_windows.ps1前，需要修改这个文件，添加CUDA配置：</br>
+          -D WITH_CUDA=ON `</br>
+          -D CUDA_ARCH_BIN=8.6 `</br>
+          -D CUDA_ARCH_PTX=8.6 `</br>
+文件内容参考 .\GameAssist\tool\cuda\build_windows.ps1</br>
+注意CUDA_ARCH_*的值，和你显卡实际的计算能力对应，具体值参考显卡官网：</br>
+https://developer.nvidia.com/zh-cn/cuda-gpus
+</br>
+2、定制编译支持CUDA的OpenCvSharp4；</br>
+https://github.com/shimat/opencvsharp</br>
+在OpenCvSharp.csproj文件中，增加ENABLED_CUDA。</br>
+在OpenCvSharpExtern项目上右键，属性，找到c/c++，预编译，增加ENABLED_CUDA。</br>
+详细步骤可以参考下面的链接：
+https://github.com/shimat/opencvsharp/issues/1299</br>
+https://blog.csdn.net/bashendixie5/article/details/106162481</br>
+OpenCvSharp作者不再支持CUDA加速，这块编码一堆问题，正在考虑是否继续使用OpenCvSharp，或者切换到c++项目。c++的UI前端选型比较麻烦，mfc等技术太老，winui3又太新，试用中发现各种不便，纠结中......</br>
+</br>
+</br>
+3、代码中指定使用CUDA进行后台加速：</br>
+this.detectionNet.SetPreferableBackend(Backend.CUDA);</br>
+this.detectionNet.SetPreferableTarget(Target.CUDA);</br>
+</br>
+</br>
+五、引用的框架及项目：</br>
 </br>
 1、intel贡献的大神级图像处理框架OpenCv：</br>
 https://opencv.org/</br>
@@ -75,7 +105,7 @@ https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md</br>
 </br>
 </br>
-五、联系方式：</br>
+六、联系方式：</br>
 </br>
-日常工作繁忙，不能及时回复，各位可以在 issues 区交流。
+日常工作繁忙，不能及时回复，各位可以在 issues 区留言交流。
 

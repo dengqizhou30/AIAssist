@@ -146,9 +146,11 @@ namespace GameAssist
             this.detectionNet = CvDnn.ReadNetFromTensorflow(modelFile, configFile);
             //this.detectionNet = CvDnn.ReadNetFromTensorflow(modelFile);
 
-            this.detectionNet.SetPreferableBackend(Backend.DEFAULT);
-            this.detectionNet.SetPreferableTarget(Target.CPU);
-            //this.detectionNet.SetPreferableTarget(Net.Target.OPENCL);
+            //this.detectionNet.SetPreferableBackend(Backend.DEFAULT);
+            //this.detectionNet.SetPreferableTarget(Target.CPU);
+
+            this.detectionNet.SetPreferableBackend(Backend.CUDA);
+            this.detectionNet.SetPreferableTarget(Target.CUDA);
 
             this.labelNames = File.ReadAllLines(labelFile)
             .Select(line => line.Split('\n').Last())
