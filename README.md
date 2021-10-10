@@ -1,5 +1,10 @@
 GameAssist是一个AI游戏助手，结合OpenCv、OpenCvSharp4、ssd_mobilenet_v3等技术，对游戏对象进行识别，支持自动瞄准/自动开枪等功能，提升玩家的游戏体验；</br>
-
+</br>
+**
+OpenCvSharp作者不再支持CUDA加速，编译CUDA一堆问题，正在考虑是否继续使用OpenCvSharp，或者切换到c++项目。c++的UI前端选型比较麻烦，mfc等技术太老，winui3又太新，试用中发现各种不便，纠结中......</br>
+找个节假日，切换到c++项目算了，有兴趣的兄弟多交流</br>
+**
+</br>
 工具和普通游戏外挂不同：</br>
 普通游戏外挂：通过需改游戏执行代码/修改游戏内存数据/拦截游戏网络通讯等手段，破坏游戏进程，达到提升目的，这些手段是违法的。</br>
 GameAssist：使用AI技术进行屏幕检测，原理是用人工智能技术来玩游戏，不使用任何破坏游戏进程的手段。</br>
@@ -75,7 +80,8 @@ https://github.com/shimat/opencvsharp</br>
 详细步骤可以参考下面的链接：
 https://github.com/shimat/opencvsharp/issues/1299</br>
 https://blog.csdn.net/bashendixie5/article/details/106162481</br>
-OpenCvSharp作者不再支持CUDA加速，这块编码一堆问题，正在考虑是否继续使用OpenCvSharp，或者切换到c++项目。c++的UI前端选型比较麻烦，mfc等技术太老，winui3又太新，试用中发现各种不便，纠结中......</br>
+</br>
+OpenCvSharp作者不再支持CUDA加速，这块编译一堆问题，正在考虑是否继续使用OpenCvSharp，或者切换到c++项目......</br>
 </br>
 </br>
 3、代码中指定使用CUDA进行后台加速：</br>
