@@ -46,10 +46,10 @@ windows10，16核CPU，16G内存，8G rtx3070显卡</br>
 逆战图像里面的图像识别准确率比绝地求生高，效果也更好，借助工具辅助，个人由一个菜鸟升级为中高级玩家。</br>
 </br>
 游戏效果截图：</br>
-![img](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/AIAssist.png)</br>
-![img](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/juediqiusheng1.png)</br>
-![img](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/nizhan1.png)</br>
-![img](https://i.postimg.cc/yJ6s4z9G/nizhan1.jpg)</br>
+![blockchain](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/AIAssist.png)</br>
+![blockchain](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/juediqiusheng1.png)</br>
+![blockchain](https://github.com/dengqizhou30/AIAssist/blob/master/GameAssist/test/nizhan1.png)</br>
+![blockchain](https://i.postimg.cc/yJ6s4z9G/nizhan1.jpg)</br>
 </br>
 </br>
 三、后续优化方向：</br>
