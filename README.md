@@ -1,4 +1,4 @@
-**2021/10/27 重要通告：由于程序使用的核心库OpenCvSharp4不支持显卡cdma加速，所以重新开发了c++版本的AIAssist，本项目不再更新，新项目地址 https://github.com/dengqizhou30/AIAssistC**<br><br>
+**通告：本项目不再更新，新项目地址 https://github.com/dengqizhou30/AIAssistOpenCV**<br><br>
 
 GameAssist是一个AI游戏助手，结合OpenCv、OpenCvSharp4、ssd_mobilenet_v3等技术，对游戏对象进行识别，支持自动瞄准/自动开枪等功能，提升玩家的游戏体验；</br>
 </br>
