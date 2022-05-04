@@ -1,4 +1,5 @@
-**通告：本项目不再更新，新项目地址 https://github.com/dengqizhou30/AIAssistOpenCV**<br><br>
+**通告：本项目不再更新，新项目地址 https://github.com/dengqizhou30/AIAssistOpenCV ；**<br>
+**新项目做了重构简化，已发布可运行程序，有兴趣的兄弟可以下载试用 https://github.com/dengqizhou30/AIAssistOpenCV/releases ；**<br><br>
 
 GameAssist是一个AI游戏助手，结合OpenCv、OpenCvSharp4、ssd_mobilenet_v3等技术，对游戏对象进行识别，支持自动瞄准/自动开枪等功能，提升玩家的游戏体验；</br>
 </br>
